@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium;
-using OpenQA.Selenium;
-
 
 namespace TestAutomationExample.Infra.Driver
 {
@@ -17,9 +15,12 @@ namespace TestAutomationExample.Infra.Driver
             appiumOptions.AddAdditionalCapability("appium:automationName", "uiautomator2");
             appiumOptions.AddAdditionalCapability("appium:appPackage", "com.itau.broker");
             appiumOptions.AddAdditionalCapability("appium:appActivity", "com.itau.broker.activity.LoginActivity_");
-            
+            appiumOptions.AddAdditionalCapability("unicodeKeyboard", "true");
+            appiumOptions.AddAdditionalCapability("resetKeyboard", "true");
+
             // Inicialização do driver
             driver = new AndroidDriver<AndroidElement>(new Uri("http://localhost:4723"), appiumOptions);
+            driver.Context = "NATIVE_APP";
         }
         public AndroidDriver<AndroidElement> Current => driver;
 

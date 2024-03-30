@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TestAutomationExample.Domain\TestAutomationExample.Domain.csproj" />
     <ProjectReference Include="..\TestAutomationExample.Infra\TestAutomationExample.Infra.csproj" />
     <ProjectReference Include="..\TestAutomationExample.Services\TestAutomationExample.Services.csproj" />
   </ItemGroup>

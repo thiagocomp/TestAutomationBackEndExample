@@ -26,7 +26,6 @@ namespace TestAutomationExample.Services.Pages.ItauCorretora
         private AndroidElement PasswordEditText => _androidDriver.FindElement(By.Id("com.itau.broker:id/password"));
         private AndroidElement LoginButton => _androidDriver.FindElement(By.Id("com.itau.broker:id/button_login"));
         private AndroidElement MessageTextView => _androidDriver.FindElement(By.Id("android:id/message"));
-        private AndroidElement FooterTextView => _androidDriver.FindElement(By.Id("com.itau.broker:id/footer_view"));
 
         public void LoadLogin()
         {
