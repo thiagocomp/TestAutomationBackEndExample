@@ -31,4 +31,8 @@
     <ProjectReference Include="..\TestAutomationExample.Services\TestAutomationExample.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Weather\" />
+  </ItemGroup>
+
 </Project>
