@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestAutomationExample.Domain\TestAutomationExample.Domain.csproj" />
+    <ProjectReference Include="..\TestAutomationExample.Infra\TestAutomationExample.Infra.csproj" />
+  </ItemGroup>
+
+</Project>
