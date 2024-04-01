@@ -7,7 +7,7 @@ Cenário: Verificar uma requisição informando uma cidade brasileira
 	Dado que tenho acesso a api de weather
 	Quando envio a requisição da cidade "Taboão da Serra" estado "SP" país "BR"
 	Então visualizo o retorno da requisição com sucesso
-
+#
 @ct06
 Cenário: Verificar uma requisição informando uma cidade brasileira e validando o Id retornado
 	Dado que tenho acesso a api de weather
@@ -38,4 +38,4 @@ Cenário: Verificar uma requisição informando uma cidade inválida
 	Dado que tenho acesso a api de weather
 	Quando envio a requisição da cidade "Ayco" estado "SP" país "BR"
 	Então visualizo a mensagem de erro Cidade não localizada
-	
+#	

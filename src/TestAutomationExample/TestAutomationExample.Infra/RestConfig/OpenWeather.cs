@@ -1,6 +1,4 @@
 ﻿using RestSharp;
-using System.Text.Json;
-using System.Text.Json.Nodes;
 
 
 namespace TestAutomationExample.Infra.RestConfig
@@ -11,8 +9,8 @@ namespace TestAutomationExample.Infra.RestConfig
         protected readonly string _apiKey;
         public OpenWeather()
         {
-            _client = new RestClient("https://api.openweathermap.org");
-            _apiKey = "";
+            _client = new RestClient(Environment.GetEnvironmentVariable("WEATHER_URL"));
+            _apiKey = Environment.GetEnvironmentVariable("WEATHER_APIKEY");
         }
        
     }

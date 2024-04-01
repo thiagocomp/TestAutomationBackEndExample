@@ -9,23 +9,22 @@ namespace TestAutomationExample.Tests.Steps.ItauCorretora
     public sealed class ItauCorretoraSteps
     {
         private readonly ScenarioContext _scenarioContext;
-        private readonly LoginPage _loginPage;
-        private readonly QuotesPage _quotesPage;
-        private readonly SearchEnginePage _searchEnginePage;
+        private LoginPage _loginPage;
+        private QuotesPage _quotesPage;
+        private SearchEnginePage _searchEnginePage;
         private readonly AppiumDriverManager _driver;
 
         public ItauCorretoraSteps(ScenarioContext scenarioContext, AppiumDriverManager driver)
         {
-            _driver = driver;
             _scenarioContext = scenarioContext;
-            _loginPage = new LoginPage(_driver.Current);
-            _quotesPage = new QuotesPage(_driver.Current);
-            _searchEnginePage = new SearchEnginePage(_driver.Current);
+            _driver = driver;
         }
 
         [Given(@"que tenho o aplicativo do Itaú Corretora instalado")]
         public void GivenQueTenhoOAplicativoDoItauCorretoraInstalado()
         {
+            _driver.InitializeDriver();
+            _loginPage = new LoginPage(_driver.Current);
             _loginPage.LoadLogin();
         }
 
@@ -39,12 +38,12 @@ namespace TestAutomationExample.Tests.Steps.ItauCorretora
         {
             Assert.AreEqual("Ocorreu um erro no tratamento da resposta.", _loginPage.GetMessageBox(), true);
             Assert.AreEqual("Ok, Entendi", _loginPage.GetTextButton1(), true);
-            _driver.Dispose();
         }
 
         [When(@"acesso a sessão de cotações")]
         public void WhenAcessoASessaoDeCotacoes()
         {
+            _quotesPage = new QuotesPage(_driver.Current);
             _quotesPage.AccessQuotes();
         }
 
@@ -59,12 +58,14 @@ namespace TestAutomationExample.Tests.Steps.ItauCorretora
             Assert.AreEqual("altas", _elementes.High, true);
             Assert.AreEqual("baixas", _elementes.Low, true);
             Assert.AreEqual("maiores volumes", _elementes.LargerVolumes, true);
-            _driver.Dispose();
         }
 
         [Given(@"que estou na sessão cotações")]
         public void GivenQueEstouNaSessaoCotacoes()
         {
+            _driver.InitializeDriver();
+            _loginPage = new LoginPage(_driver.Current);
+            _quotesPage = new QuotesPage(_driver.Current);
             _loginPage.LoadLogin();
             _quotesPage.AcessSearchEngine();
         }
@@ -73,6 +74,7 @@ namespace TestAutomationExample.Tests.Steps.ItauCorretora
         [When(@"preencho o ativo ""([^""]*)"" ativo para consultar a cotação")]
         public void WhenPreenchoOAtivoAtivoParaConsultarACotacao(string ticker)
         {
+            _searchEnginePage = new SearchEnginePage(_driver.Current);
             _searchEnginePage.FillSearchField(ticker);
         }
 
@@ -80,7 +82,6 @@ namespace TestAutomationExample.Tests.Steps.ItauCorretora
         public void ThenAMensagemQueOAtivoNaoFoiEncontradoDeveSerExibidaComSucesso()
         {
             Assert.AreEqual("ABCD não encontrado", _searchEnginePage.GetEmptyLabelText(), true);
-            _driver.Dispose();
         }
 
 
@@ -94,7 +95,6 @@ namespace TestAutomationExample.Tests.Steps.ItauCorretora
         public void ThenOsCaracteresDevemSerApagadosComSucesso()
         {
             Assert.AreEqual("empresa/código/índice", _searchEnginePage.GetSearchFieldText(), true);
-            _driver.Dispose();
         }
 
 

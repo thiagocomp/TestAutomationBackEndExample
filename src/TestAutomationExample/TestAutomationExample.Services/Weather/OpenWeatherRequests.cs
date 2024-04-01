@@ -9,7 +9,6 @@ namespace TestAutomationExample.Services.Weather
 {
     public class OpenWeatherRequests : OpenWeather
     {
-        public OpenWeatherRequests() { }
         public Root GetWeather(string cityName, string stateCode, string country)
         {
             var response = this.GetCoordinates(cityName, stateCode, country);

@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\PerfilInvestidor\" />
     <Folder Include="Features\Weather\" />
   </ItemGroup>
 
