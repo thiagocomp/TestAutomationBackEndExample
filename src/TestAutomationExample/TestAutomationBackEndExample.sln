@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationExample.Tests", "TestAutomationExample.Tests\TestAutomationExample.Tests.csproj", "{1AEEBB9C-1F36-4664-9C26-34E65E76E992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationBackEndExample.Tests", "TestAutomationExample.Tests\TestAutomationBackEndExample.Tests.csproj", "{1AEEBB9C-1F36-4664-9C26-34E65E76E992}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationExample.Infra", "TestAutomationExample.Infra\TestAutomationExample.Infra.csproj", "{56493C1F-73EC-48B6-BEFD-D9B751FC8853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationBackEndExample.Infra", "TestAutomationExample.Infra\TestAutomationBackEndExample.Infra.csproj", "{56493C1F-73EC-48B6-BEFD-D9B751FC8853}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationExample.Services", "TestAutomationExample.Services\TestAutomationExample.Services.csproj", "{65777FA8-8EE8-45CC-9D21-8DC120357006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationBackEndExample.Services", "TestAutomationExample.Services\TestAutomationBackEndExample.Services.csproj", "{65777FA8-8EE8-45CC-9D21-8DC120357006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAutomationExample.Domain", "TestAutomationExample.Domain\TestAutomationExample.Domain.csproj", "{FF7E650A-350E-48D4-A3D0-BE91C2D55BD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationBackEndExample.Domain", "TestAutomationExample.Domain\TestAutomationBackEndExample.Domain.csproj", "{FF7E650A-350E-48D4-A3D0-BE91C2D55BD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

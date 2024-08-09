@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace TestAutomationExample.Tests.Features.Weather
+namespace TestAutomationBackEndExample.Tests.Features.Weather
 {
     using TechTalk.SpecFlow;
     using System;
@@ -65,7 +65,7 @@ namespace TestAutomationExample.Tests.Features.Weather
             if (((testRunner.FeatureContext != null) 
                         && (testRunner.FeatureContext.FeatureInfo.Title != "API Weather")))
             {
-                global::TestAutomationExample.Tests.Features.Weather.APIWeatherFeature.FeatureSetup(null);
+                global::TestAutomationBackEndExample.Tests.Features.Weather.APIWeatherFeature.FeatureSetup(null);
             }
         }
         

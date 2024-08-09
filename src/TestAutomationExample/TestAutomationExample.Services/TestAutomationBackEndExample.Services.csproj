@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestAutomationExample.Domain\TestAutomationExample.Domain.csproj" />
-    <ProjectReference Include="..\TestAutomationExample.Infra\TestAutomationExample.Infra.csproj" />
+    <ProjectReference Include="..\TestAutomationExample.Domain\TestAutomationBackEndExample.Domain.csproj" />
+    <ProjectReference Include="..\TestAutomationExample.Infra\TestAutomationBackEndExample.Infra.csproj" />
   </ItemGroup>
 
 </Project>

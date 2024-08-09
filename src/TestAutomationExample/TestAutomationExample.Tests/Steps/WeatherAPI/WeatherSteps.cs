@@ -1,8 +1,7 @@
 ﻿using RestSharp;
-using System.Text.Json.Nodes;
 using TechTalk.SpecFlow;
+using TestAutomationBackEndExample.Tests.Validation;
 using TestAutomationExample.Domain.Deserialize.Weather;
-using TestAutomationExample.Infra.RestConfig;
 using TestAutomationExample.Services.Weather;
 
 
@@ -13,48 +12,47 @@ namespace TestAutomationExample.Tests.Steps.WeatherAPI
     {
         private readonly ScenarioContext _scenarioContext;
         private readonly OpenWeatherRequests _weather;
+        private readonly WeatherValidation _weatherValidation;
         private Root _response;
         private RestResponse _responseWrong;
-        private string _city;
-        private string _country;
         private int _cityId;
-        public WeatherSteps(ScenarioContext scenarioContext, OpenWeatherRequests weather)
+        public WeatherSteps(ScenarioContext scenarioContext, OpenWeatherRequests weather, WeatherValidation weatherValidation)
         {
             _scenarioContext = scenarioContext;
             _weather = weather;
+            _weatherValidation = weatherValidation;
             _cityId = 0;
         }
 
         [Given(@"que tenho acesso a api de weather")]
         public void GivenQueTenhoAcessoAApiDeWeather()
         {
-            Assert.IsTrue(_weather != null);
+            _weatherValidation.ValidateCredentials();
         }
 
         [When(@"envio a requisição da cidade ""([^""]*)"" estado ""([^""]*)"" país ""([^""]*)""")]
         public void WhenEnvioARequisicaoDaCidadeEstadoPais(string city, string state, string country)
         {
             _response = _weather.GetWeather(city, state, country);
-            _city = city;
-            _country = country;
+            _scenarioContext.TryAdd("City", city);
+            _scenarioContext.TryAdd("Country", country);
             _cityId = _cityId == 0 ? _response.id : _cityId;
         }
 
         [Then(@"visualizo o retorno da requisição com sucesso")]
         public void ThenVisualizoORetornoDaRequisicaoComSucesso()
         {
-            Assert.AreEqual("OK", _response.StatusCode, true);
-            Assert.AreEqual(_city, _response.name, true);
-            Assert.AreEqual(_country, _response.sys.country, true);
+            _scenarioContext.TryGetValue("City", out string? city);
+            _scenarioContext.TryGetValue("Country", out string? country);
+            _weatherValidation.ValidateReturnOk(_response, city, country);
         }
 
         [Then(@"visualizo o retorno da requisição com sucesso validando o id")]
         public void ThenVisualizoORetornoDaRequisicaoComSucessoValidandoOId()
         {
-            Assert.AreEqual("OK", _response.StatusCode, true);
-            Assert.AreEqual(_city, _response.name, true);
-            Assert.AreEqual(_country, _response.sys.country, true);
-            Assert.AreEqual(_cityId, _response.id);
+            _scenarioContext.TryGetValue("City", out string? city);
+            _scenarioContext.TryGetValue("Country", out string? country);
+            _weatherValidation.ValidateReturnOkAndCityId(_response, city, country, _cityId);
         }
 
         [When(@"envio a requisição da cidade ""([^""]*)"" estado ""([^""]*)"" país ""([^""]*)"" com metodo Put")]
@@ -63,11 +61,6 @@ namespace TestAutomationExample.Tests.Steps.WeatherAPI
             _responseWrong = _weather.GetWeatherPut(city, state, country);
         }
 
-        [Then(@"visualizo a mensagem de erro")]
-        public void ThenVisualizoAMensagemDeErro()
-        {
-            
-        }
         [When(@"envio a requisição da cidade ""([^""]*)"" estado ""([^""]*)"" país ""([^""]*)"" com apikey inválida")]
         public void WhenEnvioARequisicaoDaCidadeEstadoPaisComApikeyInvalida(string city, string state, string country)
         {

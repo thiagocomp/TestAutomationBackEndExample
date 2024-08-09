@@ -1,7 +1,6 @@
 ﻿using RestSharp;
 using System.Text.Json;
-using System.Text.Json.Nodes;
-using TestAutomationExample.Domain.Deserialize.Direct;
+using TestAutomationBackEndExample.Domain.Deserialize.Direct;
 using TestAutomationExample.Domain.Deserialize.Weather;
 using TestAutomationExample.Infra.RestConfig;
 

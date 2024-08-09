@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -26,13 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestAutomationExample.Domain\TestAutomationExample.Domain.csproj" />
-    <ProjectReference Include="..\TestAutomationExample.Infra\TestAutomationExample.Infra.csproj" />
-    <ProjectReference Include="..\TestAutomationExample.Services\TestAutomationExample.Services.csproj" />
+    <ProjectReference Include="..\TestAutomationExample.Domain\TestAutomationBackEndExample.Domain.csproj" />
+    <ProjectReference Include="..\TestAutomationExample.Infra\TestAutomationBackEndExample.Infra.csproj" />
+    <ProjectReference Include="..\TestAutomationExample.Services\TestAutomationBackEndExample.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\PerfilInvestidor\" />
     <Folder Include="Features\Weather\" />
   </ItemGroup>
 
