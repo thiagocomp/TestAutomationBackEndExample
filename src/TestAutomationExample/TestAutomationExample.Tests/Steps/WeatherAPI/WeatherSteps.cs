@@ -68,10 +68,9 @@ namespace TestAutomationExample.Tests.Steps.WeatherAPI
         }
 
         [Then(@"visualizo a mensagem de erro ""([^""]*)"" StatusCode ""([^""]*)""")]
-        public void ThenVisualizoAMensagemDeErroStatusCode(string mensagemErro, string statusCode)
+        public void ThenVisualizoAMensagemDeErroStatusCode(string errorMessage, string statusCode)
         {
-            Assert.AreEqual(statusCode, _responseWrong.StatusCode.ToString(), true);
-            Assert.IsTrue(_responseWrong.Content.Contains(mensagemErro));
+            _weatherValidation.ValidateErrorAndStatusCode(_responseWrong, errorMessage, statusCode);
         }
 
         [When(@"envio a requisição da cidade ""([^""]*)"" estado ""([^""]*)"" país ""([^""]*)"" sem informar apikey")]
@@ -83,7 +82,7 @@ namespace TestAutomationExample.Tests.Steps.WeatherAPI
         [Then(@"visualizo a mensagem de erro Cidade não localizada")]
         public void ThenVisualizoAMensagemDeErroCidadeNaoLocalizada()
         {
-            Assert.AreEqual("Cidade não localizada", _response.name, true);
+            _weatherValidation.ValidateCityNotFound(_response);
         }
 
     }
